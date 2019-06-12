@@ -1,0 +1,87 @@
+//購物車總數
+function total_pay(_this){
+	if(typeof addCart === "function")
+		addCart(_this);
+	var costPrice = $(".all-cost-js"),
+	    tPrice = 0;
+			costPrice.each(function() {
+			tPrice += parseInt($(this).html());
+	});
+	$("#total").html(tPrice);
+	
+	
+}
+//購物車計數
+$(document).on('click', '.btn-number', function(event) {
+	event.preventDefault();
+	/* Act on the event */
+	
+	var type = $(this).data("type");
+	var cost = $(this).parents('.cost-controll').prev('.cost-js').html();
+	var all_cost = $(this).parents('.cost-controll').next('.all-cost-js');
+	
+	if (type == "minus") {
+		var min = $(this).data("min");
+		var n = $(this).parents('.input-group-btn').next('.input-number').val();
+		
+		if (n > min) {
+			n --;
+			console.log(n);
+			var final = n*cost;
+			all_cost.html(final);
+			$(this).parent('.input-group-btn').next('.input-number').val(n);
+			total_pay(this);
+		}
+		else{
+			var final = n*cost;
+			all_cost.html(final);
+			$(this).parent('.input-group-btn').next('.input-number').val(min);
+			total_pay(this);
+		}
+
+	}else if (type == "plus") {
+		var max = $(this).data("max");
+		var n = $(this).parent('.input-group-btn').prev('.input-number').val();
+		if (n < max) {
+			n ++;
+			var final = n*cost;
+			all_cost.html(final);
+			$(this).parent('.input-group-btn').prev('.input-number').val(n);
+			total_pay(this);
+		}
+
+	}else{
+		var final = n*cost;
+		all_cost.html(final);
+		$(this).parent('.input-group-btn').prev('.input-number').val(max);
+		total_pay(this);
+	}
+
+});
+//購物車刪除
+/*$(document).on('click', '.delete-js', function(event) {
+	event.preventDefault();
+	
+	$(this).parents('.cart-item-js').remove();
+
+});*/
+
+$(document).ready(function() {
+	//日期
+	$('.datepicker').datepicker({autoclose: true});
+});
+$.fn.serializeObject = function() {
+      var o = {};
+      var a = this.serializeArray();
+      $.each(a, function() {
+          if (o[this.name] !== undefined) {
+              if (!o[this.name].push) {
+                  o[this.name] = [o[this.name]];
+              }
+              o[this.name].push(this.value || '');
+          } else {
+              o[this.name] = this.value || '';
+          }
+      });
+      return o;
+    };

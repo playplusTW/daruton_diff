@@ -1,0 +1,59 @@
+
+$(function(){
+	$("input.input-number").on( "focusout", function(){
+		//console.log(123);
+		/*var input = $(this);
+		console.log(input[0].validity);
+		console.log(input[0].validationMessage);
+		//input[0].validationMessage = ("因您購買的數量較多，系統無法自動服務，麻煩請您直接連絡我們，我們會有專人為您處理，不便之處請見諒！");
+		if(input.val()>20){
+			console.log(12);
+			input[0].setCustomValidity("因您購買的數量較多，系統無法自動服務，麻煩請您直接連絡我們，我們會有專人為您處理，不便之處請見諒！");
+		}
+		else{
+			input[0].setCustomValidity("");*/
+			
+		/*}
+		console.log(input[0].validationMessage);*/
+			var input = $(this);
+			var msg = input.parents("td").find(".msg");
+			msg.hide();
+			if(input.val()>99 || input.val()<0)
+			{
+				//console.log(input.val());css("display","inline-block")
+				msg.show();
+				
+			}else
+			{
+				
+				addCart(this);
+			}
+	} );
+});
+function addCart(_this){
+	
+	var number = parseInt($(_this).parents('.input-group').find('.input-number').val(),10);
+	var pid = $(_this).parents('.input-group').find('input[name=pid]').val();
+	//console.log(number);
+	//console.log(pid);
+	sendData(pid,number);
+}
+
+function sendData(pid,number){
+	$.ajax({
+        url: 'ACT/CartDo/Add',
+        type: 'POST',
+        data: {pid:pid,num:number},
+		dataType: 'json',
+        
+	    }).done(function(json){
+			if(json.success){
+				$("#cartsize").html(json.total);
+				//alert("加入成功!");
+				//top.location.reload();
+				//top.location.href = "paylogin.html";
+			}
+		}).always(function() {
+			//myAppMask.hidePleaseWait();
+	  	});
+}
