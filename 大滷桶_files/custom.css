@@ -202,7 +202,11 @@ a:hover,a:focus{color:#aaa; }
 			height: 200px;
 		}
 		.quantity-m-top {
-			margin-top: 56px;
+			margin-top: 36px;
+		}
+		.quantity-m-top a,.quantity-m-top{
+			line-height: 30px !important;
+			font-size: 30px !important;
 		}
 	}
 
@@ -219,7 +223,7 @@ a:hover,a:focus{color:#aaa; }
 			height: 150px;
 		}
 		.quantity-m-top {
-			margin-top: 31px;
+			margin-top: 19px;
 		}
 	}
 
@@ -240,7 +244,7 @@ a:hover,a:focus{color:#aaa; }
 			padding-right: 0;
 		}
 		.quantity-m-top {
-			margin-top: 26px;
+			margin-top: 16px;
 		}
 		.details {
 			overflow: hidden; 
@@ -254,7 +258,7 @@ a:hover,a:focus{color:#aaa; }
 			height: 130px;
 		}
 		.quantity-m-top {
-			margin-top: 21px;
+			margin-top: 12px;
 		}
 	}
 
@@ -266,7 +270,7 @@ a:hover,a:focus{color:#aaa; }
 			padding: 0;
 		}
 		.quantity-m-top {
-			margin-top: 17px;
+			margin-top: 10px;
 		}
 	}
 
@@ -275,7 +279,7 @@ a:hover,a:focus{color:#aaa; }
 			height: 107px;
 		}
 		.quantity-m-top {
-			margin-top: 8px;
+			margin-top: 5px;
 		}
 	}
 
